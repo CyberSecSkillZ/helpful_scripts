@@ -1,2 +1,1 @@
-# helpful_scripts
-# helpful_scripts
+Handy scripts for inspecting container images.
