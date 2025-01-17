@@ -5,7 +5,7 @@ consolidate_Severe_vulns.py : Crawls all AWS accounts and locates ONLY High/Crit
 
     1) The script imports boto3 for AWS interactions and json for formatting output.
     2) It creates or clears the Severe_Vulns.txt file at the start.
-    3) The script has a list for AWS account IDs where it will check for vulnerabilities. You should replace the placeholder account IDs with your actual account IDs.
+    3) The script has a list for AWS account IDs where it will check for vulnerabilities.
     4) The check_image_vulnerabilities function:
        - Initializes a boto3 session.
        - Calls the Security Hub API to retrieve findings.
