@@ -42,20 +42,10 @@ check_unchanged_images() {
     
     if grep -q "$IMAGE_VERSION" "$LAST_RUN_FILE"; then
         local LAST_DATE=$(grep "$IMAGE_VERSION" "$LAST_RUN_FILE" | awk '{print $2}')
-
-        # Convert dates to seconds since epoch for comparison
-        LAST_DATE_EPOCH=$(date -j -f "%Y-%m-%d" "$LAST_DATE" +"%s" 2>/dev/null)
-        CURRENT_DATE_EPOCH=$(date -j -f "%Y-%m-%d" "$LAST_RUN_DATE" +"%s" 2>/dev/null)
-
-        # Check if dates were parsed correctly
-        if [[ -z "$LAST_DATE_EPOCH" || -z "$CURRENT_DATE_EPOCH" ]]; then
-            echo "Error parsing dates: LAST_DATE='$LAST_DATE', CURRENT_DATE='$LAST_RUN_DATE'" >> "$OUTPUT_FILE"
-            return
-        fi
-
+        
         # Calculate the difference in months
-        local DIFF_MONTHS=$(( (CURRENT_DATE_EPOCH - LAST_DATE_EPOCH) / 2592000 ))
-
+        local DIFF_MONTHS=$(( ( $(date -d "$LAST_RUN_DATE" +%s) - $(date -d "$LAST_DATE" +%s) ) / 2592000 ))
+        
         if [ "$DIFF_MONTHS" -ge 3 ]; then
             echo "$IMAGE_VERSION $LAST_DATE" >> "$FLAGGED_OUTPUT_FILE"
             echo "Flagged unchanged image version: $IMAGE_VERSION (Last updated: $LAST_DATE)" >> "$OUTPUT_FILE"
@@ -64,7 +54,7 @@ check_unchanged_images() {
 }
 
 # Specify the production account
-PROFILE="proddnp"
+PROFILE="prod" 
 
 echo "Processing profile: $PROFILE" >> "$OUTPUT_FILE"
 
