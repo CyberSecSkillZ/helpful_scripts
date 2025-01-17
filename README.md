@@ -14,7 +14,7 @@ consolidate_Severe_vulns.py : Crawls all AWS accounts and locates ONLY High/Crit
     6) The script is executed by calling the main function.
 
 current_eks_version_check.sh : Crawls all AWS accounts and retrieves current EKS images, versions and meta data.
--Explanation of the SHELL Script:
+- Explanation of the SHELL Script:
 
     1) The script initializes an output file named current_eks_images.sh to store the image versions.
     2) Customized the PROFILES array with my actual AWS CLI profiles to iterate through different AWS accounts.
@@ -27,13 +27,12 @@ current_eks_version_check.sh : Crawls all AWS accounts and retrieves current EKS
     5) A message is printed indicating that all images have been saved to the specified output file.
 
 fetch_nonPatched_images.sh : Crawls all AWS accounts and fetches images that have not been updated in the past three months.
--Explanation of the SHELL Script:
+- Explanation of the SHELL Script:
 
     1) The script generates a date string in the format YYYYMM for the output filenames.
     2) Two output files are created:
        - images-YYYYMM.txt: This file stores the images and their versions along with the date they were fetched.
        - flaggedImages-YYYYMM.txt: This file contains flagged images that have not changed in three months.
-
     3) If last_run_images.txt does not exist, the script creates it.
     4) This function retrieves all unique images from the specified EKS clusters. It uses kubectl config use-context to set the context for each cluster.
     5) This function checks if an image version exists in the last_run_images.txt file and flags it if it hasn’t changed in three months.
@@ -43,7 +42,7 @@ fetch_nonPatched_images.sh : Crawls all AWS accounts and fetches images that hav
     9) The script logs where the images and flagged images have been saved.
 
 inspect_4_zoneTakeOver.sh : Crawls all AWS accounts to detect if they are vulnerable to the "Zone Take Over" flaw.
-Explanation of the SHELL script:
+- Explanation of the SHELL script:
 
     1) The script initializes the output file flagged_resources.txt and clears its content.
     2) It retrieves all AWS profiles and loops through each profile to perform the checks.
