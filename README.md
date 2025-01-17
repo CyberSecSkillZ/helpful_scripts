@@ -1,7 +1,7 @@
 Handy scripts for inspecting container images and vulnerabilities in AWS cloud.
 
 consolidate_Severe_vulns.py : Crawls all AWS accounts and locates ONLY High/Critical vulnerabilities.
-- Explanation of PYTHON the Script:
+- Explanation of the PYTHON Script:
 
     1) The script imports boto3 for AWS interactions and json for formatting output.
     2) It creates or clears the Severe_Vulns.txt file at the start.
