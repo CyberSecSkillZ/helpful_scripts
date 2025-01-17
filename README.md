@@ -13,7 +13,7 @@ consolidate_Severe_vulns.py : Crawls all AWS accounts and locates ONLY High/Crit
     5) The main function iterates through the list of accounts, checks for vulnerabilities in each account, and writes any severe vulnerabilities found to the output file.
     6) The script is executed by calling the main function.
 
-current_eks_version_check.sh : Crawls all AWS accounts and retrieves current EKS images, versions and meta data.
+current_eks_version_check.sh : Crawls ALL AWS accounts and retrieves current EKS images, versions and meta data.
 - Explanation of the SHELL Script:
 
     1) The script initializes an output file named current_eks_images.sh to store the image versions.
@@ -26,7 +26,7 @@ current_eks_version_check.sh : Crawls all AWS accounts and retrieves current EKS
     4) The script loops through each profile in the PROFILES array and calls the fetch_images_from_eks function.
     5) A message is printed indicating that all images have been saved to the specified output file.
 
-fetch_nonPatched_images.sh : Crawls all AWS accounts and fetches images that have not been updated in the past three months.
+fetch_nonPatched_images.sh : Crawls production account  and fetches images that have not been updated in the past three months.
 - Explanation of the SHELL Script:
 
     1) The script generates a date string in the format YYYYMM for the output filenames.
